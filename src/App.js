@@ -18,7 +18,7 @@ export default function App() {
     api.get("repositories").then((response) => {
       setRepositories(response.data);
     });
-  }, []);
+  }, repositories);
 
   async function handleLikeRepository(id) {
     // Implement "Like Repository" functionality
@@ -28,7 +28,7 @@ export default function App() {
 
     setRepositories(
       repositories.map((repository) => {
-        repository.data.id === id ? likedRepository : repository;
+        return repository.id === id ? likedRepository : repository;
       })
     );
   }
